@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addLearnerCard } from '../../stores/pageSlice';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import { useSpring, animated } from '@react-spring/web';
 import MultiCard from '../MultiCard';
 import Markdown from '../Markdown';
