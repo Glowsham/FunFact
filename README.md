@@ -1,2 +1,0 @@
-# FunFact
-Created with CodeSandbox
