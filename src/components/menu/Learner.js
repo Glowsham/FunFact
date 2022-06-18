@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSpring, animated } from '@react-spring/web';
 import MultiCard from '../MultiCard';
 import Markdown from '../Markdown';
-import 'swiper/css';
+import 'swiper/swiper.min.css';
 import '../../styles/Learner.css';
 
 function Learner({ item, overlayScale, ...props }) {
