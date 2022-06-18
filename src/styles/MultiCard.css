@@ -1,0 +1,44 @@
+/* content wrapper */
+.contentWrapper {
+	padding: 1rem 1rem;
+	white-space: pre-wrap;
+	position: relative;
+}
+
+/* content */
+.cardContent > div {
+	position: absolute;
+	padding-right: 2rem;
+	width: 100%;
+}
+.cardContent > div.visible {
+	position: relative;
+	padding-right: 0;
+}
+.cardContent > div.hidden {
+	visibility: hidden;
+	top: -999px;
+}
+
+/* nice question display */
+.cardContent .question > * {
+	margin: 0;
+	text-align: center;
+	padding-bottom: 0.5rem;
+}
+
+/* for contenteditable */
+.cardContent > div > * {
+	width: 100%;
+}
+
+/* big title */
+.cardContent h4:nth-child(1) {
+	display: inline-block;
+	font-weight: bold;
+}
+
+/* small adjustment */
+.cardContent p {
+	margin-bottom: 0;
+}

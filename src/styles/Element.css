@@ -1,0 +1,30 @@
+.navbar {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	position: fixed !important;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+}
+
+.navbar-brand {
+	cursor: default;
+}
+
+.navTitle {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.navbarSpacing {
+	padding-bottom: 57px;
+}
+
+.navOrganize {
+	width: 100%;
+	background: #21252a;
+	color: white;
+}
+
+.navOrganize .navbar-brand {
+	cursor: pointer;
+}

@@ -1,0 +1,29 @@
+#root {
+	max-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.itemsContainer {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	overflow-x: hidden;
+	gap: 1.5rem;
+}
+
+.itemsContainer.notionDetails {
+	gap: 1rem;
+}
+
+.itemsContainer .card {
+	cursor: pointer;
+}
+
+.itemsContainer img {
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+}
