@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
 	organizeStart,
 	organizeItem,
@@ -160,13 +160,13 @@ function Item({ type, ...props }) {
 }
 
 function useLongPress(callback) {
-	var [timer, setTimer] = useState(null);
+	var timer = useRef(null);
 	const downHandler = () => {
-		setTimer(setTimeout(callback, 700));
+		timer.current = setTimeout(callback, 700);
 	};
 	const upHandler = () => {
-		clearTimeout(timer);
-		setTimer(null);
+		clearTimeout(timer.current);
+		timer.current = null;
 	};
 
 	return {

@@ -4,3 +4,7 @@
 .swiper-slide {
 	padding: 1.5rem !important;
 }
+
+.swiper .card {
+	cursor: pointer;
+}

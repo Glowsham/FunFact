@@ -50,12 +50,12 @@ function CardItem({ item, overlayScale, isOverlay, ...props }) {
 						: menuOpen(item)
 				);
 			}}
-			style={style}
 			colorMaster={
 				item.full === true ? item.color : '#ffffff'
 			}
 			{...(page.status === 3
 				? {
+						style,
 						cardRef: setNodeRef,
 						...attributes,
 						...listeners

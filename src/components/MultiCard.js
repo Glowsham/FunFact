@@ -47,7 +47,18 @@ function MultiCard({
 	});
 	useEffect(() => {
 		if (currentMaster) setCurrent(currentMaster);
-	}, [currentMaster]);
+		if (height.get() === '0px') {
+			height.set(
+				contentRef.current.querySelector(
+					current === 2
+						? '.short'
+						: current === 3
+						? '.full'
+						: '.question'
+				).clientHeight + 'px'
+			);
+		}
+	}, [currentMaster, height, current]);
 
 	const flipCard = () => {
 		if (clickHandler) clickHandler();
@@ -60,9 +71,13 @@ function MultiCard({
 		}
 	};
 	const changeHeight = () => {
-		height.start(
+		height.set(
 			contentRef.current.querySelector(
-				current === 2 ? '.short' : '.full'
+				current === 2
+					? '.short'
+					: current === 3
+					? '.full'
+					: '.question'
 			).clientHeight + 'px'
 		);
 	};

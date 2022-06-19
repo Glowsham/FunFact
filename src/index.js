@@ -1,3 +1,9 @@
+/*
+IMPROVEMENTS TO DO:
+- pause when new slide added to learner
+- cardItem, actionButton, menuBackground slow animation
+*/
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './stores/store';
