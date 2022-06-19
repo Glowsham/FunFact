@@ -164,7 +164,7 @@ function apiRequest({ page, pageType, params, method, body }) {
 				);
 
 				var res = await fetch(
-					'http://localhost:8000/api/login',
+					'https://funfact-api.herokuapp.com/api/login',
 					{
 						method: 'POST',
 						headers: {
@@ -210,7 +210,7 @@ function apiRequest({ page, pageType, params, method, body }) {
 			  };
 
 		fetch(
-			'http://localhost:8000/api/' +
+			'https://funfact-api.herokuapp.com/api/' +
 				page +
 				'/' +
 				pageType +
