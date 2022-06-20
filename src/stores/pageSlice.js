@@ -269,16 +269,20 @@ export function createNewItem() {
 		var body;
 		if (getState().page.type !== 'notionDetails') {
 			var title = prompt('Give a title to the new item:');
+			if (!title) return;
 			body = { title };
 		} else {
 			var short = prompt('Give a short title to the note:');
-			var full = prompt('And now a full one:');
+			if (!short) return;
+			var question = prompt(
+				'And now a full one (a question):'
+			);
+			if (!question) return;
 			body = {
-				short: '# ' + short + '\n(short content)',
-				full: '# ' + full + '\n(full content)'
+				short: '# ' + question + '\n...',
+				full: '# ' + short + '\n...'
 			};
 		}
-		if (!title && !short && !full) return;
 
 		apiRequest({
 			page: 'create',
