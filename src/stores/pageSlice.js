@@ -279,8 +279,8 @@ export function createNewItem() {
 			);
 			if (!question) return;
 			body = {
-				short: '# ' + question + '\n...',
-				full: '# ' + short + '\n...'
+				short: '# ' + short + '\n...',
+				full: '# ' + question + '\n...'
 			};
 		}
 

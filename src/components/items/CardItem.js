@@ -41,8 +41,8 @@ function CardItem({ item, overlayScale, isOverlay, ...props }) {
 				),
 				full: <Markdown content={item.content.full} />
 			}}
-			order={[3, 2]}
-			currentMaster={item.full ? 2 : 3}
+			order={[2, 3]}
+			currentMaster={item.full ? 3 : 2}
 			clickHandler={() => {
 				dispatch(
 					page.status !== 3
@@ -50,7 +50,7 @@ function CardItem({ item, overlayScale, isOverlay, ...props }) {
 						: menuOpen(item)
 				);
 			}}
-			colorMaster={!item.full ? item.color : '#ffffff'}
+			colorMaster={item.full === true ? item.color : '#ffffff'}
 			{...(page.status === 3
 				? {
 						style,
