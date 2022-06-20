@@ -334,7 +334,10 @@ export function moveItem() {
 			method: 'PATCH',
 			body: { newElement: title }
 		}).then((body) => {
-			if (body.item) dispatch(itemRemove(body.item.id));
+			if (body.item) {
+				dispatch(itemRemove(body.item.id));
+				dispatch(menuClose());
+			}
 		});
 	};
 }
