@@ -14,7 +14,6 @@ function CardEditor({ item }) {
 	const dispatch = useDispatch();
 
 	const [current, setCurrent] = useState(false);
-	const swipeButton = useRef(null);
 	const style = useSpring({
 		x: current ? 1 : 0
 	});
@@ -69,7 +68,6 @@ function CardEditor({ item }) {
 					className="editButton p-2"
 					onClick={() => setCurrent(!current)}
 				>
-					<div ref={swipeButton}>
 						<animated.div
 							className="full"
 							style={{
@@ -82,7 +80,8 @@ function CardEditor({ item }) {
 										extend:
 											'clamp'
 									}
-								)
+								),
+								position: current === 0 ? 'relative' : 'absolute'
 							}}
 						>
 							<FlipFrontIcon />
@@ -102,7 +101,8 @@ function CardEditor({ item }) {
 										extend:
 											'clamp'
 									}
-								)
+								),
+								position: current === 1 ? 'relative' : 'absolute'
 							}}
 						>
 							<FlipBackIcon />
@@ -110,7 +110,6 @@ function CardEditor({ item }) {
 								Back side
 							</small>
 						</animated.div>
-					</div>
 				</div>
 				<div className="ms-auto d-flex flex-row">
 					<div
