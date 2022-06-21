@@ -64,12 +64,9 @@ function CardEditor({ item }) {
 				colorMaster={item.color}
 			/>
 			<div className="cardButtons mt-2 d-flex flex-row">
-				<div
-					className="editButton p-2"
-					onClick={() => setCurrent(!current)}
-				>
 						<animated.div
-							className="full"
+							className="full editButton p-2"
+							onClick={() => setCurrent(!current)}
 							style={{
 								opacity: style.x.to(
 									{
@@ -90,7 +87,8 @@ function CardEditor({ item }) {
 							</small>
 						</animated.div>
 						<animated.div
-							className="short"
+							className="short editButton p-2"
+							onClick={() => setCurrent(!current)}
 							style={{
 								opacity: style.x.to(
 									{
@@ -129,7 +127,6 @@ function CardEditor({ item }) {
 						<DeleteIcon />
 					</div>
 				</div>
-			</div>
 		</>
 	);
 }
