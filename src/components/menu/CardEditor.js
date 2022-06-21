@@ -16,22 +16,8 @@ function CardEditor({ item }) {
 	const [current, setCurrent] = useState(false);
 	const swipeButton = useRef(null);
 	const style = useSpring({
-		x: current ? 1 : 0,
-		width: swipeButton.current
-			? swipeButton.current.querySelector(
-					current ? '.short' : '.full'
-			  ).clientWidth + 'px'
-			: '0px'
+		x: current ? 1 : 0
 	});
-	useEffect(() => {
-		if (style.width.get() === '0px') {
-			style.width.set(
-				swipeButton.current.querySelector(
-					current ? '.short' : '.full'
-				).clientWidth + 'px'
-			);
-		}
-	}, [style.width, current]);
 
 	const shortRef = useRef(null);
 	const fullRef = useRef(null);
@@ -81,16 +67,9 @@ function CardEditor({ item }) {
 			<div className="cardButtons mt-2 d-flex flex-row">
 				<div
 					className="editButton p-2"
-					onClick={() => {
-						setCurrent(!current);
-					}}
+					onClick={() => setCurrent(!current)}
 				>
-					<animated.div
-						style={{
-							width: style.width
-						}}
-						ref={swipeButton}
-					>
+					<div ref={swipeButton}>
 						<animated.div
 							className="full"
 							style={{
@@ -131,7 +110,7 @@ function CardEditor({ item }) {
 								Back side
 							</small>
 						</animated.div>
-					</animated.div>
+					</div>
 				</div>
 				<div className="ms-auto d-flex flex-row">
 					<div
