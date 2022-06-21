@@ -10,12 +10,9 @@
 	cursor: pointer;
 	transition-property: background;
 	transition-duration: 200ms;
+	display: flex;
 }
 
 .editButton:hover {
 	background: var(--bs-gray-200);
-}
-
-.editButton div {
-	position: absolute;
 }
