@@ -60,19 +60,19 @@ function Learner({ item, overlayScale, ...props }) {
 										question: (
 											<>
 												<h2 className="fw-bold">
-													{item.content.short.match(
+													{item.content.full.match(
 														questionMatch
 													)
-														? item.content.short.match(
+														? item.content.full.match(
 																questionMatch
 														  )[1]
 														: '(...)'}
 												</h2>
 												<h1 className="fw-bold display-4">
-													{item.content.full.match(
+													{item.content.short.match(
 														questionMatch
 													)
-														? item.content.full.match(
+														? item.content.short.match(
 																questionMatch
 														  )[1]
 														: '(...)'}

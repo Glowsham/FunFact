@@ -38,7 +38,7 @@ export const pageSlice = createSlice({
 						];
 					action.payload.items[
 						index
-					].full = false;
+					].flipped = false;
 				});
 			}
 			return {
@@ -69,7 +69,7 @@ export const pageSlice = createSlice({
 				state.items.findIndex(
 					(el) => el.id === action.payload.id
 				)
-			].full = !action.payload.full;
+			].flipped = !action.payload.flipped;
 		},
 		menuOpen: (state, action) => {
 			state.selected = action.payload;
@@ -274,13 +274,12 @@ export function createNewItem() {
 		} else {
 			var short = prompt('Give a short title to the note:');
 			if (!short) return;
-			var question = prompt(
-				'And now a full one (a question):'
-			);
+			var question = prompt('And now a full one (a question):');
 			if (!question) return;
+
 			body = {
-				short: '# ' + short + '\n...',
-				full: '# ' + question + '\n...'
+				short: '# ' + question + '\n...',
+				full: '# ' + short + '\n...'
 			};
 		}
 
