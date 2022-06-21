@@ -16,6 +16,6 @@
 	background: var(--bs-gray-200);
 }
 
-.editButton div div {
+.editButton div {
 	position: absolute;
 }

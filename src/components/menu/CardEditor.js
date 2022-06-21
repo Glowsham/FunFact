@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { editItem, moveItem, deleteItem } from '../../stores/pageSlice';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 import { useSpring, animated } from '@react-spring/web';
 import MultiCard from '../MultiCard';
@@ -64,50 +64,47 @@ function CardEditor({ item }) {
 				colorMaster={item.color}
 			/>
 			<div className="cardButtons mt-2 d-flex flex-row">
-						<animated.div
-							className="full editButton p-2"
-							onClick={() => setCurrent(!current)}
-							style={{
-								opacity: style.x.to(
-									{
-										output: [
-											1,
-											0
-										],
-										extend:
-											'clamp'
-									}
-								),
-								visibility: x.to(() => x < 0.9 ? 'visible': 'hidden')
-							}}
-						>
-							<FlipFrontIcon />
-							<small className="ms-3 me-1">
-								Front side
-							</small>
-						</animated.div>
-						<animated.div
-							className="short editButton p-2"
-							onClick={() => setCurrent(!current)}
-							style={{
-								opacity: style.x.to(
-									{
-										output: [
-											0,
-											1
-										],
-										extend:
-											'clamp'
-									}
-								),
-								visibility: x.to(() => x > 0.1 ? 'visible': 'hidden')
-							}}
-						>
-							<FlipBackIcon />
-							<small className="ms-3 me-1">
-								Back side
-							</small>
-						</animated.div>
+				<div
+					className="editButton p-2"
+					onClick={() => setCurrent(!current)}
+				>
+					<animated.div
+						className="full"
+						style={{
+							opacity: style.x.to({
+								output: [1, 0],
+								extend: 'clamp'
+							}),
+							position: !current
+								? 'relative'
+								: 'absolute'
+						}}
+					>
+						<FlipFrontIcon />
+						<small className="ms-3 me-1">
+							Front side
+						</small>
+					</animated.div>
+					<animated.div
+						className="short"
+						onClick={() =>
+							setCurrent(!current)
+						}
+						style={{
+							opacity: style.x.to({
+								output: [0, 1],
+								extend: 'clamp'
+							}),
+							position: current
+								? 'relative'
+								: 'absolute'
+						}}
+					>
+						<FlipBackIcon />
+						<small className="ms-3 me-1">
+							Back side
+						</small>
+					</animated.div>
 				</div>
 				<div className="ms-auto d-flex flex-row">
 					<div
@@ -127,6 +124,7 @@ function CardEditor({ item }) {
 						<DeleteIcon />
 					</div>
 				</div>
+			</div>
 		</>
 	);
 }
