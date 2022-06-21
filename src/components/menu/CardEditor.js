@@ -81,7 +81,7 @@ function CardEditor({ item }) {
 											'clamp'
 									}
 								),
-								position: current === 0 ? 'relative' : 'absolute'
+								position: !current ? 'relative' : 'absolute'
 							}}
 						>
 							<FlipFrontIcon />
@@ -102,7 +102,7 @@ function CardEditor({ item }) {
 											'clamp'
 									}
 								),
-								position: current === 1 ? 'relative' : 'absolute'
+								position: current ? 'relative' : 'absolute'
 							}}
 						>
 							<FlipBackIcon />
