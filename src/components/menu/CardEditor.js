@@ -108,7 +108,7 @@ function CardEditor({ item }) {
 						>
 							<FlipFrontIcon />
 							<small className="ms-3 me-1">
-								Full side
+								Front side
 							</small>
 						</animated.div>
 						<animated.div
@@ -128,7 +128,7 @@ function CardEditor({ item }) {
 						>
 							<FlipBackIcon />
 							<small className="ms-3 me-1">
-								Short side
+								Back side
 							</small>
 						</animated.div>
 					</animated.div>
