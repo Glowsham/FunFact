@@ -78,7 +78,7 @@ function CardEditor({ item }) {
 											'clamp'
 									}
 								),
-								position: !current ? 'relative' : 'absolute'
+								visibility: x.to(() => x < 0.9 ? 'visible': 'hidden')
 							}}
 						>
 							<FlipFrontIcon />
@@ -100,7 +100,7 @@ function CardEditor({ item }) {
 											'clamp'
 									}
 								),
-								position: current ? 'relative' : 'absolute'
+								visibility: x.to(() => x > 0.1 ? 'visible': 'hidden')
 							}}
 						>
 							<FlipBackIcon />
