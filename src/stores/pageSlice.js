@@ -4,9 +4,16 @@ import toast from 'react-hot-toast';
 
 export const pageSlice = createSlice({
 	name: 'menu',
-	initialState: {},
+	initialState: {
+		status: 0
+	},
 	reducers: {
 		loading: (state, action) => {
+			if (state.status > 1) {
+				state.status = 1;
+				state.element = {};
+				state.items = [];
+			}
 			state.status = state.items ? 1 : 0;
 			state.type =
 				action.payload[1] !== ''
@@ -14,10 +21,6 @@ export const pageSlice = createSlice({
 					: 'home';
 			state.selected = null;
 			state.learner = [];
-			if (!state.items || state.items.length !== 0) {
-				state.element = {};
-				state.items = [];
-			}
 		},
 		loaded: (state, action) => {
 			if (state.type === 'notionDetails') {
@@ -274,7 +277,9 @@ export function createNewItem() {
 		} else {
 			var short = prompt('Give a short title to the note:');
 			if (!short) return;
-			var question = prompt('And now a full one (a question):');
+			var question = prompt(
+				'And now a full one (a question):'
+			);
 			if (!question) return;
 
 			body = {

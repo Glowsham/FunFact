@@ -31,7 +31,9 @@ function Items() {
 	const dispatch = useDispatch();
 	var [activeId, setActiveId] = useState(null);
 
-	const bindLong = useLongPress(() => dispatch(organizeStart()));
+	const [itemBind, containerBind] = useLongPress(() =>
+		dispatch(organizeStart())
+	);
 
 	const sensors = useSensors(
 		useSensor(MouseSensor, {
@@ -72,11 +74,14 @@ function Items() {
 	};
 
 	return page.status !== 3 ? (
-		<div className={'itemsContainer p-4 ' + page.type}>
+		<div
+			className={'itemsContainer p-4 ' + page.type}
+			{...containerBind}
+		>
 			<ItemsContainer
 				page={page}
 				dispatch={dispatch}
-				{...bindLong}
+				{...itemBind}
 			/>
 		</div>
 	) : (
@@ -169,12 +174,20 @@ function useLongPress(callback) {
 		timer.current = null;
 	};
 
-	return {
-		onMouseDown: downHandler,
-		onTouchStart: downHandler,
-		onMouseUp: upHandler,
-		onTouchEnd: upHandler
-	};
+	return [
+		{
+			onMouseDown: downHandler,
+			onTouchStart: downHandler,
+			onMouseUp: upHandler,
+			onTouchEnd: upHandler
+		},
+		{
+			onScroll: () => {
+				clearTimeout(timer.current);
+				timer.current = null;
+			}
+		}
+	];
 }
 
 export default Items;
