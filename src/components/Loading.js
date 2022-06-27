@@ -59,7 +59,7 @@ function Loading() {
 			}}
 		>
 			<animated.div style={star}>
-				<img src="/star.png" alt="" />
+				<img src="/img/star.png" alt="" />
 			</animated.div>
 		</animated.div>
 	);

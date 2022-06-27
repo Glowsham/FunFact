@@ -73,7 +73,7 @@ function Action() {
 					<img
 						width="24"
 						height="24"
-						src="/starGray.png"
+						src="/img/starGray.png"
 						alt="Learn"
 						style={{
 							filter:

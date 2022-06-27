@@ -140,7 +140,11 @@ function ItemsContainer({ page, dispatch, ...props }) {
 		))
 	) : page.status >= 2 ? (
 		<div className="text-center mt-5">
-			<img className="col-2 mb-4" src="/star.png" alt="" />
+			<img
+				className="col-2 mb-4"
+				src="/img/starIcon.png"
+				alt=""
+			/>
 			<p className="h4">There's nothing there!</p>
 			<div className="col-7 mx-auto">
 				It looks like no items have been created here at
