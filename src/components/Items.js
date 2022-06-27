@@ -142,7 +142,7 @@ function ItemsContainer({ page, dispatch, ...props }) {
 		<div className="text-center mt-5">
 			<img
 				className="col-2 mb-4"
-				src="/img/starIcon.png"
+				src="/img/starDefault.png"
 				alt=""
 			/>
 			<p className="h4">There's nothing there!</p>
