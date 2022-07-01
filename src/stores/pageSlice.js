@@ -83,9 +83,23 @@ export const pageSlice = createSlice({
 		learnChange: (state) => {
 			state.status = state.status === 2 ? 4 : 2;
 		},
-		addLearnerCard: (state, action) => {
+		createLearner: (state) => {
+			var ids = state.items.map((el) => el.id);
+			let currentIndex = ids.length,
+				randomIndex;
+			while (currentIndex !== 0) {
+				randomIndex = Math.floor(
+					Math.random() * currentIndex
+				);
+				currentIndex--;
+				[ids[currentIndex], ids[randomIndex]] = [
+					ids[randomIndex],
+					ids[currentIndex]
+				];
+			}
+			state.learner.push(...ids);
 			// here: do something to add new card
-			for (var i = 0; i < action.payload; i++) {
+			/*for (var i = 0; i < action.payload; i++) {
 				state.learner.push(
 					state.items[
 						Math.floor(
@@ -95,7 +109,21 @@ export const pageSlice = createSlice({
 						)
 					]
 				);
-			}
+			}*/
+		},
+		addLearner: (state, action) => {
+			state.learner.splice(
+				state.learner.length -
+					Math.floor(
+						Math.random() *
+							state.items.length
+					),
+				0,
+				action.payload.id
+			);
+			// add the commands to pageSlice.actions and use
+			// them in learnToggle and learner.js when slides
+			// is to certain amount
 		},
 		newItem: (state, action) => {
 			if (state.type === 'notionDetails') {
@@ -146,7 +174,8 @@ export const {
 	menuOpen,
 	menuClose,
 	learnChange,
-	addLearnerCard,
+	createLearner,
+	addLearner,
 	newItem,
 	itemUpdate,
 	itemRemove
@@ -296,7 +325,10 @@ export function createNewItem() {
 				: null,
 			method: 'POST',
 			body
-		}).then((body) => dispatch(newItem(body.item)));
+		}).then((body) => {
+			dispatch(newItem(body.item));
+			dispatch(addLearner(body.item));
+		});
 	};
 }
 
@@ -391,7 +423,7 @@ export function deleteItem() {
 export function learnToggle() {
 	return async (dispatch, getState) => {
 		if (getState().page.learner.length === 0) {
-			dispatch(addLearnerCard(3));
+			dispatch(createLearner());
 		}
 		dispatch(learnChange());
 	};

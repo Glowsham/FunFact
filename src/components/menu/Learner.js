@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addLearnerCard } from '../../stores/pageSlice';
+import { createLearner } from '../../stores/pageSlice';
 
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import { useSpring, animated } from '@react-spring/web';
@@ -43,7 +43,7 @@ function Learner({ item, overlayScale, ...props }) {
 						2 + swiper.activeIndex >=
 						page.learner.length
 					) {
-						dispatch(addLearnerCard(1));
+						dispatch(createLearner());
 					}
 				}}
 				onResize={(swiper) => {
@@ -51,61 +51,70 @@ function Learner({ item, overlayScale, ...props }) {
 				}}
 			>
 				{page.learner
-					? page.learner.map((item, index) => (
-							<SwiperSlide
-								key={index}
-							>
-								<MultiCard
-									content={{
-										question: (
-											<>
-												<h2 className="fw-bold">
-													{item.content.full.match(
-														questionMatch
-													)
-														? item.content.full.match(
-																questionMatch
-														  )[1]
-														: '(...)'}
-												</h2>
-												<h1 className="fw-bold display-4">
-													{item.content.short.match(
-														questionMatch
-													)
-														? item.content.short.match(
-																questionMatch
-														  )[1]
-														: '(...)'}
-												</h1>
-											</>
-										),
-										short: (
-											<Markdown
-												content={
-													item
-														.content
-														.short
-												}
-											/>
-										),
-										full: (
-											<Markdown
-												content={
-													item
-														.content
-														.full
-												}
-											/>
-										)
-									}}
-									order={[
-										1,
-										3,
-										2
-									]}
-								/>
-							</SwiperSlide>
-					  ))
+					? page.learner.map((itemId, index) => {
+							var item = page.items.find(
+								(el) =>
+									el.id ===
+									itemId
+							);
+							return (
+								<SwiperSlide
+									key={
+										index
+									}
+								>
+									<MultiCard
+										content={{
+											question: (
+												<>
+													<h2 className="fw-bold">
+														{item.content.full.match(
+															questionMatch
+														)
+															? item.content.full.match(
+																	questionMatch
+															  )[1]
+															: '(...)'}
+													</h2>
+													<h1 className="fw-bold display-4">
+														{item.content.short.match(
+															questionMatch
+														)
+															? item.content.short.match(
+																	questionMatch
+															  )[1]
+															: '(...)'}
+													</h1>
+												</>
+											),
+											short: (
+												<Markdown
+													content={
+														item
+															.content
+															.short
+													}
+												/>
+											),
+											full: (
+												<Markdown
+													content={
+														item
+															.content
+															.full
+													}
+												/>
+											)
+										}}
+										order={[
+											1,
+											3,
+											2
+										]}
+									/>
+								</SwiperSlide>
+							);
+					  })
 					: null}
 			</Swiper>
 		</animated.div>

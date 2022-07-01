@@ -1,5 +1,5 @@
 {
-  "name": "supp-fun-fact-new-icons",
+  "name": "work-fun-fact-learner-improvement",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -22,7 +22,7 @@
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
     "remark-gfm": "3.0.1",
-    "swiper": "8.1.5"
+    "swiper": "8.2.6"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
